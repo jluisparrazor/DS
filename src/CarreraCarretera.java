@@ -1,11 +1,7 @@
 
 public class CarreraCarretera extends Carrera {
     
-    public CarreraCarretera(){}
-
-    public CarreraCarretera(String nombre){
-        
-    }
+    
 
 
     @Override

@@ -6,14 +6,19 @@ public abstract class Carrera {
     private ArrayList<Bicicleta> participantes;
 
     // Constructor con parametros
-    protected Carrera(String nombre, ArrayList<Bicicleta> participantes) {
+    private Carrera(String nombre, ArrayList<Bicicleta> participantes) {
         this.nombreCarrera = nombre;
         this.participantes = participantes;
     }
 
     // Constructor sin parametros
-    protected Carrera() {
-        nombreCarrera = "";
+    private Carrera(String nombre) {
+        nombreCarrera = nombre;
+        this.participantes = new ArrayList<Bicicleta>();
+    }
+
+    private Carrera() {
+        nombreCarrera = "nombre";
         this.participantes = new ArrayList<Bicicleta>();
     }
 
