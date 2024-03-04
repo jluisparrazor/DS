@@ -1,3 +1,4 @@
-class BicicletaCarretera{
+
+public class BicicletaCarretera extends Bicicleta{
     
 }

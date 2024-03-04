@@ -1,3 +1,4 @@
-class CarreraMontana{
-    int edd = 342;
+
+public class CarreraMontana extends Carrera{
+    
 }

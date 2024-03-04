@@ -1,3 +1,4 @@
-class Bicicleta{
-    
+abstract class Bicicleta{
+    int identificador;
+    Bicicleta(){}
 }
