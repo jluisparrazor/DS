@@ -27,13 +27,5 @@ public abstract class Carrera {
 }
 
 /* CLASE ABSTRACTA NO PUEDE SER INSTANCIADA
-    // Constructor con parametros
-    public Carrera(ArrayList<Bicicleta> participantes) {
-        this.participantes = participantes;
-    }
-
-    // Constructor sin parametros
-     public Carrera() {
-        this.participantes = new ArrayList<Bicicleta>();
-    }
+    
 */

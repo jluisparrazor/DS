@@ -9,7 +9,10 @@ public class FactoriaCarretera implements FactoriaCarreraYBicicleta{
     
     
     public CarreraCarretera crearCarrera() {
+        CarreraCarretera objCarreraMontana = new CarreraMontana();
 
+
+        return objCarreraMontana;
     }
 
     public BicicletaCarretera crearBicicleta() {
