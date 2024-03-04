@@ -3,22 +3,23 @@ import java.util.ArrayList;
 public abstract class Carrera {
     // Atributos privados
     private String nombreCarrera;
+    // private const duracion = 60;
     private ArrayList<Bicicleta> participantes;
 
     // Constructor con parametros
-    private Carrera(String nombre, ArrayList<Bicicleta> participantes) {
+    protected Carrera(String nombre, ArrayList<Bicicleta> participantes) {
         this.nombreCarrera = nombre;
         this.participantes = participantes;
     }
 
     // Constructor sin parametros
-    private Carrera(String nombre) {
+    protected Carrera(String nombre) {
         nombreCarrera = nombre;
         this.participantes = new ArrayList<Bicicleta>();
     }
 
-    private Carrera() {
-        nombreCarrera = "nombre";
+    protected Carrera() {
+        nombreCarrera = "";
         this.participantes = new ArrayList<Bicicleta>();
     }
 

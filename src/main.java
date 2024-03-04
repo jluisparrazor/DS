@@ -1,13 +1,15 @@
+import java.util.ArrayList;
+
 public class main {
     public static void main(String[] args) {
-        CarreraCarretera car1 = new CarreraCarretera();
-        car1.Nombrar();
-        CarreraMontana car2 = new CarreraMontana();
-        car2.Nombrar();
-        BicicletaCarretera bic1 = new BicicletaCarretera();
-        bic1.Nombrar();
-        BicicletaMontana bic2 = new BicicletaMontana();
-        bic2.Nombrar();
+        ArrayList<BicicletaMontana> bicicletasMontana = new ArrayList<BicicletaMontana>();
+        ArrayList<BicicletaCarretera> bicicletasCarretera = new ArrayList<BicicletaCarretera>();
 
+        for (int i = 0; i < 10; i++) {
+            bicicletasMontana.add(new BicicletaMontana(i));
+            bicicletasCarretera.add(new BicicletaCarretera(i));
+        }
+
+        // Las bicicletas se crean con las factoriascarretera y factoriamontana
     }
 }
