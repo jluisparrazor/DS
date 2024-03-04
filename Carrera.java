@@ -1,12 +1,23 @@
 import java.util.ArrayList;
 
 public abstract class Carrera {
-    
     // Atributos privados
     private String nombreCarrera;
     private ArrayList<Bicicleta> participantes;
     
-    // Metodos setter y getter
+    // Constructor con parametros
+    protected Carrera(String nombre, ArrayList<Bicicleta> participantes) {
+        nombreCarrera = nombre;
+        this.participantes = participantes;
+    }
+
+    // Constructor sin parametros
+    protected Carrera() {
+        nombreCarrera = "";
+        this.participantes = new ArrayList<Bicicleta>();
+    }
+
+// Metodos setter y getter
     public ArrayList<Bicicleta> getParticipantes() {
         return this.participantes;
     }
@@ -26,6 +37,3 @@ public abstract class Carrera {
     public abstract void Nombrar(); // Decir nombre de la carrera
 }
 
-/* CLASE ABSTRACTA NO PUEDE SER INSTANCIADA
-    
-*/

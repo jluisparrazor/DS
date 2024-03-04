@@ -1,7 +1,7 @@
 
 public class CarreraCarretera extends Carrera {
     
-    public
+    public CarreraCarretera(){}
 
     @Override
     public void Nombrar() {
