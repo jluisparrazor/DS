@@ -8,11 +8,11 @@ public class FactoriaCarretera implements FactoriaCarreraYBicicleta{
 
     
     
-    public Carrera crearCarrera() {
+    public CarreraCarretera crearCarrera() {
 
     }
 
-    public Bicicleta crearBicicleta() {
+    public BicicletaCarretera crearBicicleta() {
         
     }
 }

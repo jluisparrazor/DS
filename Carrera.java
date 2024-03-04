@@ -19,6 +19,10 @@ public abstract class Carrera {
         return this.nombreCarrera;
     }
 
+    public void setNombre(String nombreCarrera) {
+        this.nombreCarrera = nombreCarrera;
+    }
+
     public abstract void Nombrar(); // Decir nombre de la carrera
 }
 

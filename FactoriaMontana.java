@@ -3,11 +3,15 @@ public class FactoriaMontana implements FactoriaCarreraYBicicleta{
 
     }  
 
-    public Carrera crearCarrera() {
+    public CarreraMontana crearCarrera() {
+        CarreraMontana objCarreraMontana;
+
+
+        return objCarreraMontana;
 
     }
 
-    public Bicicleta crearBicicleta() {
+    public BicicletaMontana crearBicicleta() {
         
     }
 }
