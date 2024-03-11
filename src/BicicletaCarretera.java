@@ -4,6 +4,10 @@ public class BicicletaCarretera extends Bicicleta {
         super(identificador);
     }
 
+    BicicletaCarretera() {
+        super();
+    }
+
     @Override
     public void Nombrar() {
         System.out.println("Bicicleta de carretera");
