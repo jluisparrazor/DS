@@ -3,5 +3,6 @@ public class Cliente {
 
     public Cliente(GestorFiltros gestorFiltros){
         this.gestorFiltros = gestorFiltros;
+        int de;
     }
 }
