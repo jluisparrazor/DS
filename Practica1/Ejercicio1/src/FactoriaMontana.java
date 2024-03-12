@@ -5,23 +5,16 @@ public class FactoriaMontana implements FactoriaCarreraYBicicleta {
 
     }
 
-    public CarreraMontana crearCarrera() {
-        CarreraMontana objCarreraMontana = new CarreraMontana();
+    public CarreraMontana crearCarrera(String nombre, ArrayList<Bicicleta> bicicletas) {
+        CarreraMontana objCarreraMontana = new CarreraMontana(nombre, bicicletas);
 
         return objCarreraMontana;
     }
 
-    public BicicletaMontana crearBicicleta() {
-        BicicletaMontana objBicicletaMontana = new BicicletaMontana();
+    public BicicletaMontana crearBicicleta(int id) {
+        BicicletaMontana objBicicletaMontana = new BicicletaMontana(id);
 
         return objBicicletaMontana;
     }
 
-    public ArrayList<BicicletaMontana> crearBicicletas(int numBicicletas) {
-        ArrayList<BicicletaMontana> bicicletas = new ArrayList<BicicletaMontana>();
-        for (int i = 0; i < numBicicletas; i++) {
-            bicicletas.add(new BicicletaMontana(i + 1));
-        }
-        return bicicletas;
-    }
 }

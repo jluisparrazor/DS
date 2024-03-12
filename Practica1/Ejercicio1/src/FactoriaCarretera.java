@@ -1,27 +1,20 @@
 import java.util.ArrayList;
 
-public class FactoriaCarretera implements FactoriaCarreraYBicicleta {
+public class FactoriaCarretera extends Thread implements FactoriaCarreraYBicicleta {
+    
     public FactoriaCarretera() {
 
     }
 
-    public CarreraCarretera crearCarrera() {
-        CarreraCarretera objCarreraCarretera = new CarreraCarretera();
+    public CarreraCarretera crearCarrera(String nombre, ArrayList<Bicicleta> bicicletas) {
+        CarreraCarretera objCarreraCarretera = new CarreraCarretera(nombre, bicicletas);
 
         return objCarreraCarretera;
     }
 
-    public BicicletaCarretera crearBicicleta() {
-        BicicletaCarretera objBicicletaCarretera = new BicicletaCarretera();
+    public BicicletaCarretera crearBicicleta(int id) {
+        BicicletaCarretera objBicicletaCarretera = new BicicletaCarretera(id);
 
         return objBicicletaCarretera;
-    }
-
-    public ArrayList<BicicletaCarretera> crearBicicletas(int numBicicletas) {
-        ArrayList<BicicletaCarretera> bicicletas = new ArrayList<BicicletaCarretera>();
-        for (int i = 0; i < numBicicletas; i++) {
-            bicicletas.add(new BicicletaCarretera(i + 1));
-        }
-        return bicicletas;
     }
 }

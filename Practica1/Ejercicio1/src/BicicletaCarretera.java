@@ -1,15 +1,16 @@
 
 public class BicicletaCarretera extends Bicicleta {
-    BicicletaCarretera(int identificador) {
-        super(identificador);
-    }
-
+   
     BicicletaCarretera() {
         super();
     }
 
+    BicicletaCarretera(int identificador) {
+        super(identificador);
+    }
+
     @Override
-    public void Nombrar() {
-        System.out.println("Bicicleta de carretera");
+    public String Nombrar() {
+        return ("La bicicleta de carretera con identificador " + identificador);
     }
 }

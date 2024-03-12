@@ -1,13 +1,13 @@
-abstract class Bicicleta{
+abstract class Bicicleta {
     public int identificador;
     
-    public Bicicleta(){
+    public Bicicleta() {
         identificador = -1;
     }
 
-    public Bicicleta(int id){
+    public Bicicleta(int id) {
         identificador = id;
     }
     
-    public abstract void Nombrar();
+    public abstract String Nombrar();
 }

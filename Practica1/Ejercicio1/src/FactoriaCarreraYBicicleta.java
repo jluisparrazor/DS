@@ -1,9 +1,7 @@
-/**
- * FactoriaCarreraYBicicleta
- */
-public interface FactoriaCarreraYBicicleta {
-    Carrera crearCarrera();
-    Bicicleta crearBicicleta();
+import java.util.ArrayList;
 
-    
+public interface FactoriaCarreraYBicicleta {
+    Carrera crearCarrera(String nombre, ArrayList<Bicicleta> bicicletas);
+
+    Bicicleta crearBicicleta(int num);
 }

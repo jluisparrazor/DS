@@ -1,15 +1,19 @@
 
 public class BicicletaMontana extends Bicicleta {
-    BicicletaMontana(int identificador) {
-        super(identificador);
-    }
-
+    // Constructor sin parametros
     BicicletaMontana() {
         super();
     }
 
+    // Constructor con parametros
+    BicicletaMontana(int identificador) {
+        super(identificador);
+    }
+
+
+
     @Override
-    public void Nombrar() {
-        System.out.println("Bicicleta de montaña");
+    public String Nombrar() {
+        return ("La bicicleta de Montaña con identificador " + identificador);
     }
 }
