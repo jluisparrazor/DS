@@ -1,5 +1,0 @@
-#!/bin/bash
-cd src/
-javac -d ../build main.java
-cd ../build/
-java main
