@@ -37,19 +37,19 @@ public class vista extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        rpmPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        RPMlabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        ConRecPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        ConTotalpanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        ConTotlabel = new javax.swing.JLabel();
+        ConReclabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        VelocimetroPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        KMlabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(25, 255, 255));
@@ -65,7 +65,6 @@ public class vista extends javax.swing.JFrame {
 
         BotonFrenar.setForeground(new java.awt.Color(0, 0, 0));
         BotonFrenar.setText("Frenar");
-        BotonFrenar.setEnabled(false);
         BotonFrenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonFrenarActionPerformed(evt);
@@ -83,7 +82,6 @@ public class vista extends javax.swing.JFrame {
 
         BotonAcelerar.setForeground(new java.awt.Color(0, 0, 0));
         BotonAcelerar.setText("Acelerar");
-        BotonAcelerar.setEnabled(false);
         BotonAcelerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAcelerarActionPerformed(evt);
@@ -94,18 +92,10 @@ public class vista extends javax.swing.JFrame {
 
         jLabel2.setText("Cuentarrevoluciones");
 
-        javax.swing.GroupLayout rpmPanelLayout = new javax.swing.GroupLayout(rpmPanel);
-        rpmPanel.setLayout(rpmPanelLayout);
-        rpmPanelLayout.setHorizontalGroup(
-            rpmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
-        );
-        rpmPanelLayout.setVerticalGroup(
-            rpmPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 66, Short.MAX_VALUE)
-        );
-
         jLabel3.setText("RPM");
+
+        RPMlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RPMlabel.setText("0");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,11 +107,11 @@ public class vista extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(rpmPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(RPMlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -132,61 +122,46 @@ public class vista extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rpmPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addComponent(RPMlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jLabel4.setText("CuentaKilometros");
 
-        javax.swing.GroupLayout ConRecPanelLayout = new javax.swing.GroupLayout(ConRecPanel);
-        ConRecPanel.setLayout(ConRecPanelLayout);
-        ConRecPanelLayout.setHorizontalGroup(
-            ConRecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
-        );
-        ConRecPanelLayout.setVerticalGroup(
-            ConRecPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 66, Short.MAX_VALUE)
-        );
-
         jLabel6.setText("Contador reciente");
 
-        javax.swing.GroupLayout ConTotalpanelLayout = new javax.swing.GroupLayout(ConTotalpanel);
-        ConTotalpanel.setLayout(ConTotalpanelLayout);
-        ConTotalpanelLayout.setHorizontalGroup(
-            ConTotalpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
-        );
-        ConTotalpanelLayout.setVerticalGroup(
-            ConTotalpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 66, Short.MAX_VALUE)
-        );
-
         jLabel7.setText("Contador total");
+
+        ConTotlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ConTotlabel.setText("0");
+
+        ConReclabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ConReclabel.setText("0");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(122, 122, 122)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4))
+                        .addComponent(jLabel7)
+                        .addContainerGap(344, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(9, 9, 9)
-                                    .addComponent(ConTotalpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel7))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(9, 9, 9)
-                                    .addComponent(ConRecPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel6)))))
-                .addContainerGap(172, Short.MAX_VALUE))
+                        .addComponent(jLabel6)
+                        .addContainerGap(318, Short.MAX_VALUE))))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ConReclabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel4))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(150, 150, 150)
+                            .addComponent(ConTotlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,31 +170,23 @@ public class vista extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ConRecPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(ConReclabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ConTotalpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ConTotlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jLabel5.setText("Salpicadero");
 
         jLabel8.setText("Velocimetro");
 
-        javax.swing.GroupLayout VelocimetroPanel3Layout = new javax.swing.GroupLayout(VelocimetroPanel3);
-        VelocimetroPanel3.setLayout(VelocimetroPanel3Layout);
-        VelocimetroPanel3Layout.setHorizontalGroup(
-            VelocimetroPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
-        );
-        VelocimetroPanel3Layout.setVerticalGroup(
-            VelocimetroPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 66, Short.MAX_VALUE)
-        );
-
         jLabel9.setText("Km/h");
+
+        KMlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        KMlabel.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,9 +199,10 @@ public class vista extends javax.swing.JFrame {
                         .addComponent(jLabel8))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(VelocimetroPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(KMlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -244,9 +212,9 @@ public class vista extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(5, 5, 5)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(VelocimetroPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(KMlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -411,10 +379,11 @@ public class vista extends javax.swing.JFrame {
     private javax.swing.JToggleButton BotonAcelerar;
     private javax.swing.JToggleButton BotonEncender;
     private javax.swing.JToggleButton BotonFrenar;
-    private javax.swing.JPanel ConRecPanel;
-    private javax.swing.JPanel ConTotalpanel;
+    private javax.swing.JLabel ConReclabel;
+    private javax.swing.JLabel ConTotlabel;
+    private javax.swing.JLabel KMlabel;
+    private javax.swing.JLabel RPMlabel;
     private javax.swing.JLabel Texto;
-    private javax.swing.JPanel VelocimetroPanel3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -427,6 +396,5 @@ public class vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel rpmPanel;
     // End of variables declaration//GEN-END:variables
 }

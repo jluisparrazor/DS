@@ -3,6 +3,7 @@ public class GestorFiltros {
 
     public GestorFiltros(Objetivo objetivo){
         cadenaFiltros = new CadenaFiltros();
+        addFiltro();
         cadenaFiltros.setObjetivo(objetivo);
     }
 

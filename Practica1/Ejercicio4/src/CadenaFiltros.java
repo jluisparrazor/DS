@@ -9,19 +9,14 @@ public class CadenaFiltros {
         filtros.clear();
     }
 
-    public void addFiltro(Filtro filtro){
-        filtros.add(new CalcularVelocidad());
-        filtros.add(new RepercutirRozamiento());
-    }
-
-    public void setObjetivo(Objetivo objetivo){
-        this.objetivo = objetivo;
-    }
-
     public double ejecutar(double revoluciones, EstadoMotor estadoMotor){
-        revoluciones = filtros.get(0).ejecutar(revoluciones, estadoMotor);
-        revoluciones = filtros.get(1).ejecutar(revoluciones, estadoMotor);
+        for(int i = 0; i < filtros.size() ; i++){
+            revoluciones = filtros.get(i).ejecutar(revoluciones, estadoMotor);
+        }
         return revoluciones;
     }
 
+    void addFiltro( Filtro filtro){
+        filtros.add(filtro);
+    }
 }
