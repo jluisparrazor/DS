@@ -1,7 +1,9 @@
 public class Cliente {
     private GestorFiltros gestorFiltros;
+    private static vista vist;
 
-    public Cliente(GestorFiltros gestorFiltros){
-        this.gestorFiltros = gestorFiltros;
+    public static void main(String[] args){
+        vist = new vista();
+        vist.main(new String[0]);
     }
 }

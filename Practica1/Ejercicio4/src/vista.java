@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejer4;
 import javax.swing.*;
 import java.awt.*;
 
@@ -66,6 +65,7 @@ public class vista extends javax.swing.JFrame {
 
         BotonFrenar.setForeground(new java.awt.Color(0, 0, 0));
         BotonFrenar.setText("Frenar");
+        BotonFrenar.setEnabled(false);
         BotonFrenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonFrenarActionPerformed(evt);
@@ -83,6 +83,7 @@ public class vista extends javax.swing.JFrame {
 
         BotonAcelerar.setForeground(new java.awt.Color(0, 0, 0));
         BotonAcelerar.setText("Acelerar");
+        BotonAcelerar.setEnabled(false);
         BotonAcelerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonAcelerarActionPerformed(evt);
@@ -310,26 +311,23 @@ public class vista extends javax.swing.JFrame {
     public boolean apa = true;
     
     private void BotonEncenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEncenderActionPerformed
-       if (BotonEncender.isSelected()) {
-        // Si el botón de encendido está seleccionado, realiza las acciones correspondientes
-        BotonEncender.setText("Apagar");
-        BotonEncender.setForeground(Color.RED);
-        Texto.setText("ENCENDIDO");
-        BotonFrenar.setEnabled(true);
-        BotonAcelerar.setEnabled(true);
-        BotonAcelerar.setSelected(false); // Deselecciona el botón de acelerar al encender
-        Texto.setForeground(Color.green);
-        apa = false;
-    } else {
-        // Si el botón de encendido se suelta, realiza las acciones correspondientes
-        BotonEncender.setText("Encender");
-        BotonEncender.setForeground(Color.GREEN);
-        Texto.setText("APAGADO");
-        BotonFrenar.setEnabled(false);
-        BotonAcelerar.setEnabled(false);
-        Texto.setForeground(Color.red);
-        apa = true;
-    }
+        if (BotonEncender.isSelected()) {
+            BotonEncender.setText("Apagar");
+            BotonEncender.setForeground(Color.RED);
+            Texto.setText("ENCENDIDO");
+            BotonFrenar.setEnabled(true);
+            BotonAcelerar.setEnabled(true);
+            Texto.setForeground(Color.green);
+            apa = false;
+        } else {
+            BotonEncender.setText("Encender");
+            BotonEncender.setForeground(Color.GREEN);
+            Texto.setText("APAGADO");
+            BotonFrenar.setEnabled(false);
+            BotonAcelerar.setEnabled(false);
+            Texto.setForeground(Color.red);
+            apa = true;
+        }
     }//GEN-LAST:event_BotonEncenderActionPerformed
 
     private void BotonAcelerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAcelerarActionPerformed
@@ -338,6 +336,7 @@ public class vista extends javax.swing.JFrame {
                     BotonAcelerar.setText("Soltar acelerador");
                     BotonAcelerar.setForeground(Color.RED);
                     BotonFrenar.setEnabled(false);
+                    BotonEncender.setEnabled(false);
                     Texto.setForeground(Color.orange);
                     Texto.setText("ACELERANDO");
                     
@@ -345,6 +344,7 @@ public class vista extends javax.swing.JFrame {
                     BotonAcelerar.setText("Acelerar");
                     BotonAcelerar.setForeground(Color.BLACK);
                     BotonFrenar.setEnabled(true);
+                    BotonEncender.setEnabled(true);
                     Texto.setForeground(Color.green);
                     Texto.setText("ENCENDIDO");
                 
@@ -355,7 +355,24 @@ public class vista extends javax.swing.JFrame {
 
     private void BotonFrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFrenarActionPerformed
         if (apa == false){
-            Texto.setText("FRENANDO");
+            if (BotonFrenar.isSelected()) {
+                    BotonFrenar.setText("Soltar freno");
+                    BotonFrenar.setForeground(Color.RED);
+                    BotonAcelerar.setEnabled(false);
+                    BotonEncender.setEnabled(false);
+                    Texto.setForeground(Color.orange);
+                    Texto.setText("FRENANDO");
+                    
+            } else {
+                    BotonFrenar.setText("Frenar");
+                    BotonFrenar.setForeground(Color.BLACK);
+                    BotonAcelerar.setEnabled(true);
+                    BotonEncender.setEnabled(true);
+                    Texto.setForeground(Color.green);
+                    Texto.setText("ENCENDIDO");
+                
+                }
+            
         }
     }//GEN-LAST:event_BotonFrenarActionPerformed
 
@@ -363,11 +380,6 @@ public class vista extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
