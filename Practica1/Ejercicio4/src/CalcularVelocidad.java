@@ -17,12 +17,10 @@ public class CalcularVelocidad implements Filtro {
         
         double rev = revoluciones + incrementoVelocidad;
 
-        if( rev < 500){
-            revoluciones = rev;
-        }else{
-            revoluciones = 500;
-        } 
-        return revoluciones;
+        if( rev > 5000)
+            rev = 5000;
+
+        return rev;
     }
 
 }

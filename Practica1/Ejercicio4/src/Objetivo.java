@@ -1,43 +1,24 @@
 public class Objetivo {
-    private double vLineal = 0;
-	private double distancia = 0;
-	private double revoluciones = 0;
-        long inicio = 0;
-        long actual = 0;
-        long anterior = 0;
-        static final double radio = 0.15;
-        
-        Objetivo()
-        {
-            this.inicio = System.currentTimeMillis();
-        }
+    private double vLineal, distancia, revoluciones;
+    long tiempoActual, tiempoAnterior;
+    static final double radio = 0.15;
+    
+    Objetivo()
+    {
+        tiempoActual = System.currentTimeMillis();
+        vLineal = 0;
+        distancia = 0;
+        revoluciones = 0;
+    }
         
 
 	public void ejecutar(double revol, EstadoMotor EstadoMotor)
         {
-            // Acelerando o frenando
-            if(EstadoMotor == EstadoMotor.ACELERANDO || EstadoMotor == EstadoMotor.ACELERANDO)
-            {
-                this.anterior = this.actual;
-                this.actual = System.currentTimeMillis();
-                this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
-                this.revoluciones = revol;
-                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
-            }
-            
-            // Ni acelerando ni frenando, pero velocidad constante
-            if(EstadoMotor == EstadoMotor.ENCENDIDO)
-            {
-                this.anterior = this.actual;
-                this.actual = System.currentTimeMillis();
-                this.vLineal = 2*Math.PI*radio*revol*((double)(60.0/1000.0));
-                this.revoluciones = revol;
-                this.distancia += this.vLineal * ((this.actual - anterior))/3600000;
-            }
-            
-            else {
-                this.actual = System.currentTimeMillis();
-            }
+        tiempoAnterior = tiempoActual;
+        tiempoActual = System.currentTimeMillis();
+        revoluciones = revol;
+        vLineal = 2 * Math.PI * radio * revoluciones * (60.0 / 1000.0);
+        distancia += vLineal / 3600000 * (tiempoActual - tiempoAnterior);
 	}
         
         public double getVelocidad(){return this.vLineal;}

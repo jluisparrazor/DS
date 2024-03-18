@@ -1,14 +1,12 @@
 public class RepercutirRozamiento implements Filtro{
+    final int decrementoVelocidad = 1;
     
     public RepercutirRozamiento(){}
 
     public double ejecutar(double revoluciones, EstadoMotor estadoMotor){
-        if(revoluciones > 0){
-            revoluciones --;
-        }else{
-            revoluciones = 0;
-        }
-        
-        return revoluciones;
+        if (revoluciones > decrementoVelocidad)
+            return revoluciones - decrementoVelocidad;
+        else 
+            return 0;
     }
 }

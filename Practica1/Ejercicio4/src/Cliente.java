@@ -1,9 +1,11 @@
 public class Cliente {
     private GestorFiltros gestorFiltros;
-    private static vista vist;
 
-    public static void main(String[] args){
-        vist = new vista();
-        vist.main(new String[0]);
+    public Cliente(GestorFiltros gestorFiltros){
+        this.gestorFiltros = gestorFiltros;
+    }
+
+    public double ejecutar(double revoluciones, EstadoMotor estadoMotor){
+        return gestorFiltros.ejecutar(revoluciones, estadoMotor);
     }
 }
