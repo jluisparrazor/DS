@@ -23,6 +23,31 @@
 \date{}
 \begin{document}
 \maketitle
+\section{Ejercicio 1}
+Para la práctica, partimos de este diagrama UML, que a su vez hemos ido completando conforme íbamos creando las clases y las íbamos uniendo. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/Ejercicio1.drawio.png}
+\caption{UML usado para los ejercicio 1 y 2}
+\end{figure}
+FactoriaCarreraYBicicleta es una interfaz, de las que heredan FactoriaCarrera y FactoriaMontaña, y Carrera y Bicicleta son clases abstractas de las que heredan CarreraMontaña y CarreraCarretera, y BicicletaMontaña y BicicletaCarretera respectivamente. 
+Nuestro main pide un número por pantalla para crear los ArrayList de bicicletas tanto de montaña como de carretera y crea las carreras correspondientes con los ArrayList. Luego llamamos a los métodos start de thread que invoca a los métodos run que hemos creado para CarreraMontaña y CarreraCarretera. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/ejecucionej1.jpeg}
+\caption{Salida por pantalla del ejercicio 1}
+\end{figure}
+Estos métodos lo que hacen es retirar el porcentaje de bicicletas que corresponda con el método retirarBicis y luego muestra por pantalla las bicicletas que quedan con el método correr. Usando start lo que conseguimos es que los dos métodos run de CarreraMontaña y CarreraCarretera se ejecuten de manera concurrente (mediante hebras).
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/bicismon.jpeg}
+\caption{Método run de CarreraMontaña}
+\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/biciscar.jpeg}
+\caption{Método run de CarreraCarretera}
+\end{figure}
 \section{Ejercicio 2}
 Para el ejercicio 2 lo que hemos tenido que hacer ha sido, en esencia, lo mismo que para el ejercicio 1. Al no poder usar interfaces en python, las hemos sustituido por clases abstractas. También tenemos que tener cuidado ya que no podemos usar como tipo la clase abstracta padre (a diferencia de java, donde se podía usar como tipo para instanciar clases hija), por lo que llamamos directamente a la clase de la cual queremos instanciar nuestros objetos. Finalmente, para implementar el patrón de diseño prototipo, hemos clonado las bicicletas cambiando luego su identificador. 
 \begin{lstlisting}[language=Python, caption={main.py}]
@@ -71,7 +96,7 @@ if __name__ == "__main__":
 \end{lstlisting}
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/ej2output.png}
+\includegraphics[width=0.9\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/ej2output.png}
 \caption{Salida por pantalla del ejercicio 2.}
 \end{figure}
 \section{Ejercicio 3}
