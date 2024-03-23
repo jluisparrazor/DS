@@ -13,13 +13,15 @@ public class CarreraMontana extends Carrera implements Runnable{
     }
 
     @Override
-    public String MostrarBicis() {
-        String mostrar = "";
+    public void MostrarBicis() {
         for (int i=0; i < getBicicletas().size(); i++) {
-            mostrar += getBicicletas().get(i).Nombrar() + "\n";
+            MostrarBici(i);
         }
+    }
 
-        return mostrar;
+    @Override
+    public void MostrarBici(int i) {
+        System.out.println(getBicicletas().get(i).Nombrar());
     }
 
     @Override
@@ -29,16 +31,11 @@ public class CarreraMontana extends Carrera implements Runnable{
 
     @Override
     public void run() {
-        Nombrar();
-        correr();
+        System.out.println("Están corriendo  "+ getNumBicicletas() + " bicis de montaña ");
         int retirar = (int) Math.round(getNumBicicletas() * 0.20);
-        System.out.println("Retirando "+ retirar + " bicis de montaña: ");
         retirarBicis(retirar);
-
-        System.out.println("\nBicicletas restantes: ");
+        System.out.println("Se han retirado "+ retirar + " bicis de montaña ");
         correr();
-
-
     }
 
 }
