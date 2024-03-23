@@ -6,11 +6,25 @@ from context import Context
 
 
 if __name__ == "__main__":
-    url = 'https://finance.yahoo.com/quote/TSLA'
+    url = 'https://finance.yahoo.com/quote/AMZN'
+
+    opcion = 0
+    while (opcion != 1 and opcion != 2 and opcion != 3):
+        print("1. TESLA")
+        print("2. AMAZON")
+        print("3. NETFLIX")
+        opcion = int(input("\nSeleccione una empresa: "))
+    
+    if (opcion == 1):
+        url = 'https://finance.yahoo.com/quote/TSLA'
+    elif (opcion == 2):
+        url = 'https://finance.yahoo.com/quote/AMZN'
+    else:
+        url = 'https://finance.yahoo.com/quote/NFLX'
 
     estrategia = 0
     while (estrategia != 1 and estrategia != 2):
-        print("1. BeautifulSoup")
+        print("\n\n1. BeautifulSoup")
         print("2. Selenium")
         estrategia = int(input("\nSeleccione una estrategia: "))
 
@@ -43,6 +57,9 @@ if __name__ == "__main__":
     
     with open(fich, "w") as f:
         json.dump(data, f, indent=4)
-   
+
+    if (estrategia == 2):
+        context._strategy.quit()
+        
     print("Informacion scrapeada de forma correcta y guardada en", fich)
 

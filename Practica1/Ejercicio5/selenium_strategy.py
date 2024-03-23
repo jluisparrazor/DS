@@ -22,9 +22,11 @@ class SeleniumStrategy(ScrapeStrategy):
         WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//td[@data-test='PREV_CLOSE-value']"))
         )
-        time.sleep(5)
-        variable = self.driver.find_element_by_xpath("//" + elemento + "[@" + atributo + "='" + valor + "']")
+
+        variable = self.driver.find_element_by_xpath(f"//{elemento}[@{atributo}='{valor}']")
         text = variable.text
-        self.driver.quit()
 
         return text
+
+    def quit(self):
+        self.driver.quit()
