@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{xcolor}
+\usepackage{float}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{mauve}{rgb}{0.58, 0, 0.82}
+\lstset{
+  basicstyle=\small\ttfamily, % Configura la fuente básica del código
+  breaklines=true, % Permite que las líneas de código se rompan si son demasiado largas para la página
+  frame=single, % Añade un marco alrededor del código
+  keepspaces=true, % Mantiene los espacios en el código, útil para mantener la indentación
+  showstringspaces=false, % Evita que los espacios en las cadenas de texto se subrayen
+  numbers=left, % Muestra los números de línea a la izquierda
+  numberstyle=\tiny\color{gray}, % Configura el estilo de los números de línea
+  keywordstyle=\color{blue}, % Configura el color de las palabras clave
+  commentstyle=\color{dkgreen}, % Configura el color de los comentarios
+  stringstyle=\color{mauve}, % Configura el color de las cadenas de texto
+}
+\title{Memoria de la práctica 1 de Desarollo de Software}
+\author{Ana Isabel Mena Meseguer \\ Jose Luis Parra Azor\\ Elena Vallejo Ruiz \\ Alejandro Ruiz Salazar}
+\date{}
+\begin{document}
+\maketitle
+\section{Ejercicio 2}
+Para el ejercicio 2 lo que hemos tenido que hacer ha sido, en esencia, lo mismo que para el ejercicio 1. Al no poder usar interfaces en python, las hemos sustituido por clases abstractas. También tenemos que tener cuidado ya que no podemos usar como tipo la clase abstracta padre (a diferencia de java, donde se podía usar como tipo para instanciar clases hija), por lo que llamamos directamente a la clase de la cual queremos instanciar nuestros objetos. Finalmente, para implementar el patrón de diseño prototipo, hemos clonado las bicicletas cambiando luego su identificador. 
+\begin{lstlisting}[language=Python, caption={main.py}]
+import copy
+from FactoriaMontana import FactoriaMontana
+from FactoriaCarretera import FactoriaCarretera
+
+if __name__ == "__main__":
+    factoriaMontana = FactoriaMontana()
+    bicicletasMontana = []
+    factoriaCarretera = FactoriaCarretera()
+    bicicletasCarretera = []
+
+    # Creacion de la bicicleta de montana original
+    bicicleta = factoriaMontana.crear_bicicleta(1)
+    bicicletasMontana.append(bicicleta)
+
+    # Inclusion del resto de bicicletas a partir de una copia de la original
+    for i in range(9):
+        bicicleta_aux = copy.deepcopy(bicicleta)
+        bicicleta_aux.set_id(i + 2)
+        bicicletasMontana.append(bicicleta_aux)
+    carreraMontana = factoriaMontana.crear_carrera("Montana", bicicletasMontana)
+
+    # Creacion de la bicicleta de carretera original
+    bicicleta = factoriaCarretera.crear_bicicleta(1)
+    bicicletasCarretera.append(bicicleta)
+
+    # Inclusion del resto de bicicletas a partir de una copia de la original
+    for i in range(9):
+        bicicleta_aux = copy.deepcopy(bicicleta)
+        bicicleta_aux.set_id(i + 2)
+        bicicletasCarretera.append(bicicleta_aux)
+    carreraCarretera = factoriaCarretera.crear_carrera("Carretera", bicicletasCarretera)
+
+    # Mostrar las bicicletas y las carreras
+    print(carreraMontana.tipo())
+    bicicletasMontana = carreraMontana.get_bicicletas()
+    for bicicleta in bicicletasMontana:
+        print(str(bicicleta.get_id()) + " " + bicicleta.tipo())
+
+    print("\n" + carreraCarretera.tipo())
+    bicicletasCarretera = carreraCarretera.get_bicicletas()
+    for bicicleta in bicicletasCarretera:
+        print(str(bicicleta.get_id()) + " " + bicicleta.tipo())   
+\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/ej2output.png}
+\caption{Salida por pantalla del ejercicio 2.}
+\end{figure}
+\section{Ejercicio 3}
+Para este ejercicio hemos implementado el patrón composite dos veces. Nuestra idea trata sobre los elementos de una web, que se dividen en Página o Contenido, donde una pagina puede tener dentro mas páginas o contenido, y el contenido a su vez puede ser o texto o imágenes, donde un texto puede tener dentro mas textos o imágenes. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/umlej3.png}
+\caption{UML del ejercicio 3}
+\end{figure}
+Para probar que estuviese bien implementado, el main que hemos hecho crea varios objetos de cada clase. Primero hacemos algunas inserciones correctas como añadir una página dentro de otra página o un contenido dentro de una pagina, y luego hemos hecho unas cuantas inserciones erróneas para mostrar por pantalla mensajes de error al intentar realizarlas, como por ejemplo meter un texto dentro de una imagen, una imagen dentro de otra imagen o una pagina dentro de un contenido.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/ejecucionej3.png}
+\caption{Salida por pantalla del ejercicio 3}
+\end{figure}
+\end{document}
