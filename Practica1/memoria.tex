@@ -19,7 +19,7 @@
   stringstyle=\color{mauve}, % Configura el color de las cadenas de texto
 }
 \title{Memoria de la práctica 1 de Desarollo de Software}
-\author{Ana Isabel Mena Meseguer \\ Jose Luis Parra Azor\\ Elena Vallejo Ruiz \\ Alejandro Ruiz Salazar}
+\author{Ana Isabel Mena Meseguer \\ José Luis Parra Azor\\ Elena Vallejo Ruiz \\ Alejandro Ruiz Salazar}
 \date{}
 \begin{document}
 \maketitle
@@ -106,10 +106,75 @@ Para este ejercicio hemos implementado el patrón composite dos veces. Nuestra i
 \includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/umlej3.png}
 \caption{UML del ejercicio 3}
 \end{figure}
-Para probar que estuviese bien implementado, el main que hemos hecho crea varios objetos de cada clase. Primero hacemos algunas inserciones correctas como añadir una página dentro de otra página o un contenido dentro de una pagina, y luego hemos hecho unas cuantas inserciones erróneas para mostrar por pantalla mensajes de error al intentar realizarlas, como por ejemplo meter un texto dentro de una imagen, una imagen dentro de otra imagen o una pagina dentro de un contenido.
+Para probar que estuviese bien implementado, el main que hemos hecho crea varios objetos de cada clase. Primero hacemos al\textit{}gunas inserciones correctas como añadir una página dentro de otra página o un contenido dentro de una pagina, y luego hemos hecho unas cuantas inserciones erróneas para mostrar por pantalla mensajes de error al intentar realizarlas, como por ejemplo meter un texto dentro de una imagen, una imagen dentro de otra imagen o una pagina dentro de un contenido.
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/ejecucionej3.png}
 \caption{Salida por pantalla del ejercicio 3}
+\end{figure}
+\section{Ejercicio 4}
+Lo primero que hicimos para este ejercicio fue diseñar el diagrama UML con el patrón \textit{filtros de intercepción}, cuyo resultado fue el siguiente:
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/umlej3.png}
+\caption{UML del ejercicio 4}
+\end{figure}
+Filtro como vemos es una interfaz de las que heredan las clases de \textit{CalcularVelocidad} y  \textit{RepercutirRozamiento} como filtros.
+
+Una vez terminado el diagrama, hemos realizado el diseño de la interfaz gráfica en NetBeans con JFrame debido a que en este entorno de desarrollo fue donde realizamos las prácticas de PDOO y es con el que más familiarizados estamos. Así es como ha quedado nuestra interfaz:
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/umlej3.png}
+\caption{Interfaz Gráfica Ejercico 4}
+\end{figure}
+Hemos realizado este ejercicio en Java, el código de la implementación del filtro \textit{CalcularVelocidad} es el siguiente:
+ \begin{lstlisting}[language=Java, caption={CalcularVelocidad.java}]
+   public class CalcularVelocidad implements Filtro {
+    
+    int incrementoVelocidad;
+
+    public CalcularVelocidad(){
+        incrementoVelocidad = 0;
+    }
+
+    public double ejecutar(double revoluciones, EstadoMotor estadoMotor){
+        if( ( estadoMotor == EstadoMotor.APAGADO ) || (estadoMotor == EstadoMotor.ENCENDIDO)){
+            incrementoVelocidad = 0;
+        }else if ( estadoMotor == EstadoMotor.FRENANDO){
+            incrementoVelocidad = -100;
+        }else{
+            incrementoVelocidad = +100;
+        }
+        
+        double rev = revoluciones + incrementoVelocidad;
+
+        if( rev > 5000)
+            rev = 5000;
+
+        return rev;
+    }
+
+}
+\end{lstlisting}
+Y el filtro \textit{RepercutirRozamiento} quedaría de la siguiente manera:
+ \begin{lstlisting}[language=Java, caption={RepercutirRozamiento.java}]
+public class RepercutirRozamiento implements Filtro{
+    final int decrementoVelocidad = 1;
+    
+    public RepercutirRozamiento(){}
+
+    public double ejecutar(double revoluciones, EstadoMotor estadoMotor){
+        if (revoluciones > decrementoVelocidad)
+            return revoluciones - decrementoVelocidad;
+        else 
+            return 0;
+    }
+}
+\end{lstlisting}
+Finalmente, al ejecutar nuestro programa, el primer paso es encender el coche. Una vez hecho esto, podemos proceder a acelerar o frenar, aunque nunca simultáneamente. Al acelerar, nuestras revoluciones aumentarán de 100 en 100, si bien se reducirá en 1 debido al rozamiento, lo que incrementará nuestra velocidad y recorrido. Al soltar el acelerador y mantener el motor encendido, las revoluciones comenzarán a disminuir de 1 en 1 hasta alcanzar 0, momento en el que el contador de revoluciones volverá a 0, debido a que estamos detenidos. Por otro lado, al frenar, nuestras revoluciones disminuirán de 100 en 100, en contraposición al efecto del acelerador. Aquí dejamos un ejemplo de uso:
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{C:/Users/PC/Dropbox/DS/P1/img/umlej3.png}
+\caption{Ejemplo de Uso Ejericicio4}
 \end{figure}
 \end{document}
