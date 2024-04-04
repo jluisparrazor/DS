@@ -47,7 +47,7 @@ public abstract class Carrera extends Thread{
     }
     
     public void correr() {
-        System.out.println(MostrarBicis());
+        MostrarBicis();
     }
 
     public boolean retirarBici(int pos) {
@@ -74,7 +74,9 @@ public abstract class Carrera extends Thread{
     }
     
 
-    public abstract String MostrarBicis(); //Mostrar todas las bicis
+    public abstract void MostrarBicis(); //Mostrar todas las bicis
+
+    public abstract void MostrarBici(int i); //Mostrar la bici en la posición i
 
     public abstract void Nombrar(); // Decir nombre de la carrera 
 
