@@ -12,7 +12,7 @@ class CadenaFiltros {
   }
 
   List<Producto> filtrar(FiltroStruct filtrosStruct) {
-    List<Producto> productosFiltrados = List.from(productos);
+    List<Producto> productosFiltrados = productos;
 
     for (int i = 0; i < filtros.length; i++) {
       productosFiltrados = filtros[i].filtrar(productosFiltrados, filtrosStruct);
