@@ -175,6 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late GestorFiltros gestorFiltros = inicializarGestorFiltros(productos);
   late List<Producto> productosFiltrados = productos;
   late Cesta cesta = Cesta(gestorFiltros);
+  late FiltroStruct filtros = FiltroStruct(-1, -1, false, Categoria.ninguna);
 
   List<String> list = ["Alimentacion", "Cosmeticos", "Ropa", "Ninguna"];
 
@@ -210,7 +211,92 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  late FiltroStruct filtros = FiltroStruct(-1, -1, false, Categoria.ninguna);
+  void dropdownButtonCallback(String? newValue) {
+    setState(() {
+      dropdownValue = newValue!;
+      if (newValue == "Alimentacion") {
+        filtros.categoria = Categoria.alimentacion;
+      } else if (newValue == "Cosmeticos") {
+        filtros.categoria = Categoria.cosmeticos;
+      } else if (newValue == "Ropa") {
+        filtros.categoria = Categoria.ropa;
+      } else {
+        filtros.categoria = Categoria.ninguna;
+      }
+    });
+  }
+
+  void valMinControllerCallback() {
+    setState(() {
+      if (valMinController.text.isNotEmpty) {
+        filtros.precioMin = double.parse(valMinController.text);
+      } else {
+        filtros.precioMin = -1;
+      }
+    });
+  }
+
+  void valMaxControllerCallback() {
+    setState(() {
+      if (valMaxController.text.isNotEmpty) {
+        filtros.precioMax = double.parse(valMaxController.text);
+      } else {
+        filtros.precioMax = -1;
+      }
+    });
+  }
+
+  void elevatedButtonDescuentoCallback() {
+    setState(() {
+      if (filtros.descuento == true) {
+        filtros.descuento = false;
+        descuento = "Todos los productos";
+      } else {
+        filtros.descuento = true;
+        descuento = "Productos con descuento";
+      }
+    });
+  }
+
+  void elevatedButtonReiniciarCallback() {
+    setState(() {
+      productosFiltrados = productos;
+      valMaxController.clear();
+      valMinController.clear();
+      descuento = "Todos los productos";
+      dropdownValue = "Ninguna";
+    });
+  }
+
+  void elevatedButtonAplicarCallback() {
+    setState(() {
+      productosFiltrados = cesta.filtrar(filtros);
+    });
+  }
+
+  void eliminarProducto(Producto producto) {
+    setState(() {
+      cesta.eliminarProducto(producto);
+    });
+  }
+
+  void adquirirProducto(Producto producto) {
+    setState(() {
+      cesta.adquirirProducto(producto);
+    });
+  }
+
+  void eliminarOcurrencias(Producto producto) {
+    setState(() {
+      cesta.eliminarOcurrencias(producto);
+    });
+  }
+
+  void vaciarCesta() {
+    setState(() {
+      cesta.vaciarCesta();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -236,18 +322,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   DropdownButton<String>(
                     value: dropdownValue,
                     onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownValue = newValue!;
-                        if (newValue == "Alimentacion") {
-                          filtros.categoria = Categoria.alimentacion;
-                        } else if (newValue == "Cosmeticos") {
-                          filtros.categoria = Categoria.cosmeticos;
-                        } else if (newValue == "Ropa") {
-                          filtros.categoria = Categoria.ropa;
-                        } else {
-                          filtros.categoria = Categoria.ninguna;
-                        }
-                      });
+                      dropdownButtonCallback(newValue);
                     },
                     items: list.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
@@ -261,22 +336,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: TextField(
                       controller: valMinController,
                       decoration: const InputDecoration(
-                          hintText: 'Ingrese el valor mínimo'),
+                        hintText: 'Ingrese el valor mínimo'),
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.center,
                       inputFormatters: <TextInputFormatter>[
                         CustomInputFormatter(), // Solo permite dígitos
                       ],
                       onTap: () {
-                        setState(() {
-                          if (valMinController.text.isNotEmpty) {
-                            filtros.precioMin =
-                                double.parse(valMinController.text);
-                            print(valMinController.text);
-                          } else {
-                            filtros.precioMin = -1;
-                          }
-                        });
+                        valMinControllerCallback();
                       },
                     ),
                   ),
@@ -292,29 +359,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         CustomInputFormatter(),
                       ],
                       onTap: () {
-                        setState(() {
-                          if (valMaxController.text.isNotEmpty) {
-                            filtros.precioMax =
-                                double.parse(valMaxController.text);
-                            print(valMaxController.text);
-                          } else {
-                            filtros.precioMax = -1;
-                          }
-                        });
+                        valMaxControllerCallback();
                       },
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        if (filtros.descuento == true) {
-                          filtros.descuento = false;
-                          descuento = "Todos los productos";
-                        } else {
-                          filtros.descuento = true;
-                          descuento = "Productos con descuento";
-                        }
-                      });
+                      elevatedButtonDescuentoCallback();
                     },
                     child: Text(descuento),
                   )
@@ -323,22 +374,14 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    productosFiltrados = cesta.filtrar(filtros);
-                  });
+                  elevatedButtonAplicarCallback();
                 },
                 child: const Text("Aplicar filtros"),
               ),
               const SizedBox(width: 50),
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    productosFiltrados = productos;
-                    valMaxController.clear();
-                    valMinController.clear();
-                    descuento = "Todos los productos";
-                    dropdownValue = "Ninguna";
-                  });
+                  elevatedButtonReiniciarCallback();
                 },
                 child: const Text("Reiniciar filtros"),
               )
@@ -372,17 +415,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         IconButton(
                           icon: const Icon(Icons.add_shopping_cart),
                           onPressed: () {
-                            setState(() {
-                              cesta.adquirirProducto(productosFiltrados[index]);
-                            });
+                            adquirirProducto(productosFiltrados[index]);
                           },
                         ),
                         IconButton(
                           icon: const Icon(Icons.remove_shopping_cart),
                           onPressed: () {
-                            setState(() {
-                              cesta.eliminarProducto(productosFiltrados[index]);                   
-                            });
+                            eliminarProducto(productosFiltrados[index]);
                           },
                         ),
                         
@@ -414,9 +453,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 IconButton(
                   icon: const Icon(Icons.delete),
                   onPressed: () {
-                    setState(() {
-                      cesta.vaciarCesta();                   
-                    });
+                    vaciarCesta();
                   },
                 ),
               ]
@@ -441,25 +478,19 @@ class _MyHomePageState extends State<MyHomePage> {
                         IconButton(
                           icon: const Icon(Icons.add_shopping_cart),
                           onPressed: () {
-                            setState(() {
-                              cesta.adquirirProducto(producto);
-                            });
+                            adquirirProducto(producto);
                           },
                         ),
                         IconButton(
                           icon: const Icon(Icons.remove_shopping_cart),
                           onPressed: () {
-                            setState(() {
-                              cesta.eliminarProducto(producto);                   
-                            });
+                            eliminarProducto(producto);
                           },
                         ),
                         IconButton(
                           icon: const Icon(Icons.delete),
                           onPressed: () {
-                            setState(() {
-                              cesta.eliminarOcurrencias(producto);                   
-                            });
+                            eliminarOcurrencias(producto);
                           },
                         ),
                       ],
