@@ -2,36 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:ejercicio3/producto.dart';
 import 'package:ejercicio3/categoria.dart';
 import 'package:ejercicio3/filtroStruct.dart';
-import 'package:ejercicio3/PorCategoria.dart';
-import 'package:ejercicio3/PrecioMinimo.dart';
-import 'package:ejercicio3/PrecioMaximo.dart';
-import 'package:ejercicio3/EnOferta.dart';
-import 'package:ejercicio3/filtro.dart';
 import 'package:ejercicio3/gestorFiltros.dart';
 import 'package:ejercicio3/cesta.dart';
 import 'package:flutter/services.dart';
+import 'package:ejercicio3/utils.dart';
 
 void main() {
-  Producto p1 = Producto("p1", Categoria.cosmeticos, 10, true);
-  Producto p2 = Producto("p2", Categoria.cosmeticos, 50, false);
-  Producto p3 = Producto("p3", Categoria.cosmeticos, 24, true);
-  Producto p4 = Producto("p4", Categoria.ropa, 15.2, false);
-  Producto p5 = Producto("p5", Categoria.ropa, 70, false);
-  Producto p6 = Producto("p6", Categoria.ropa, 32, true);
-  Producto p7 = Producto("p7", Categoria.alimentacion, 12, true);
-  Producto p8 = Producto("p8", Categoria.alimentacion, 23, true);
-  Producto p9 = Producto("p9", Categoria.alimentacion, 9, false);
-
-  List<Producto> productos = [];
-  productos.add(p1);
-  productos.add(p2);
-  productos.add(p3);
-  productos.add(p4);
-  productos.add(p5);
-  productos.add(p6);
-  productos.add(p7);
-  productos.add(p8);
-  productos.add(p9);
+  List<Producto> productos = crearProductos();
 
   for (int i = 0; i < productos.length; i++) {
     String descuento;
@@ -50,17 +27,7 @@ void main() {
         descuento);
   }
 
-  GestorFiltros gestorFiltros = GestorFiltros(productos);
-
-  Filtro oferta = EnOferta();
-  Filtro precioMin = PrecioMinimo();
-  Filtro precioMax = PrecioMaximo();
-  Filtro categoria = PorCategoria();
-  gestorFiltros.addFiltro(oferta);
-  gestorFiltros.addFiltro(precioMin);
-  gestorFiltros.addFiltro(precioMax);
-  gestorFiltros.addFiltro(categoria);
-
+  GestorFiltros gestorFiltros = inicializarGestorFiltros(productos);
   Cesta cesta = Cesta(gestorFiltros);
   FiltroStruct filtros = FiltroStruct(50, -1, false, Categoria.ropa);
 
@@ -84,46 +51,6 @@ void main() {
   }
 
   runApp(const MyApp());
-}
-
-List<Producto> crearProductos() {
-  Producto p1 = Producto("Eyeliner", Categoria.cosmeticos, 10, true);
-  Producto p2 = Producto("Base", Categoria.cosmeticos, 50, false);
-  Producto p3 = Producto("Gloss", Categoria.cosmeticos, 24, true);
-  Producto p4 = Producto("Pantalones", Categoria.ropa, 15.2, false);
-  Producto p5 = Producto("Camiseta", Categoria.ropa, 70, false);
-  Producto p6 = Producto("Chaqueta", Categoria.ropa, 32, true);
-  Producto p7 = Producto("Musaka", Categoria.alimentacion, 12, true);
-  Producto p8 = Producto("Caviar", Categoria.alimentacion, 23, true);
-  Producto p9 = Producto("Chocolate", Categoria.alimentacion, 9, false);
-
-  List<Producto> productos = [];
-  productos.add(p1);
-  productos.add(p2);
-  productos.add(p3);
-  productos.add(p4);
-  productos.add(p5);
-  productos.add(p6);
-  productos.add(p7);
-  productos.add(p8);
-  productos.add(p9);
-
-  return productos;
-}
-
-GestorFiltros inicializarGestorFiltros(List<Producto> productos) {
-  GestorFiltros gestorFiltros = GestorFiltros(productos);
-  Filtro oferta = EnOferta();
-  Filtro precioMin = PrecioMinimo();
-  Filtro precioMax = PrecioMaximo();
-  Filtro categoria = PorCategoria();
-
-  gestorFiltros.addFiltro(oferta);
-  gestorFiltros.addFiltro(precioMin);
-  gestorFiltros.addFiltro(precioMax);
-  gestorFiltros.addFiltro(categoria);
-
-  return gestorFiltros;
 }
 
 class MyApp extends StatelessWidget {
@@ -172,11 +99,10 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController valMaxController = TextEditingController();
   String descuento = "Todos los productos", dropdownValue = "Ninguna";
   List<Producto> productos = crearProductos();
-  late GestorFiltros gestorFiltros = inicializarGestorFiltros(productos);
   late List<Producto> productosFiltrados = productos;
+  late GestorFiltros gestorFiltros = inicializarGestorFiltros(productos);
   late Cesta cesta = Cesta(gestorFiltros);
   late FiltroStruct filtros = FiltroStruct(-1, -1, false, Categoria.ninguna);
-
   List<String> list = ["Alimentacion", "Cosmeticos", "Ropa", "Ninguna"];
 
   @override
@@ -285,7 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
       cesta.adquirirProducto(producto);
     });
   }
-
+  
   void eliminarOcurrencias(Producto producto) {
     setState(() {
       cesta.eliminarOcurrencias(producto);
@@ -297,6 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
       cesta.vaciarCesta();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -336,7 +263,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: TextField(
                       controller: valMinController,
                       decoration: const InputDecoration(
-                        hintText: 'Ingrese el valor mínimo'),
+                          hintText: 'Ingrese el valor mínimo'),
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.center,
                       inputFormatters: <TextInputFormatter>[
@@ -387,13 +314,11 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ]),
             const SizedBox(height: 50),
-            const Text(
-              "Productos: ",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              )
-            ),
+            const Text("Productos: ",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                )),
             Expanded(
               child: ListView.builder(
                 itemCount: productosFiltrados.length,
@@ -406,8 +331,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text("x " +
-                          cesta.cantidadProducto(productosFiltrados[index]).toString(),
+                        Text(
+                          "x " +
+                              cesta
+                                  .cantidadProducto(productosFiltrados[index])
+                                  .toString(),
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -424,7 +352,6 @@ class _MyHomePageState extends State<MyHomePage> {
                             eliminarProducto(productosFiltrados[index]);
                           },
                         ),
-                        
                       ],
                     ),
                   );
@@ -434,43 +361,39 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 5),
             const Divider(color: Color.fromARGB(255, 250, 193, 24)),
             const SizedBox(height: 5),
-            const Text(
-                "Cesta: ",
+            const Text("Cesta: ",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                )
-              ),
+                )),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround, 
-              children: <Widget>[
-                Text("Precio total: " + cesta.precioTotal().toString() + "€",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  )
-                ),
-                IconButton(
-                  icon: const Icon(Icons.delete),
-                  onPressed: () {
-                    vaciarCesta();
-                  },
-                ),
-              ]
-            
-            ),
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Text("Precio total: " + cesta.precioTotal().toString() + "€",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      )),
+                  IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      vaciarCesta();
+                    },
+                  ),
+                ]),
             Expanded(
               child: ListView.builder(
                 itemCount: cesta.productosAdquiridos.length,
                 itemBuilder: (context, index) {
-                  Producto producto = cesta.productosAdquiridos.keys.toList()[index];
+                  Producto producto =
+                      cesta.productosAdquiridos.keys.toList()[index];
                   return ListTile(
                     title: Text(producto.nombre),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text("x " +
-                          cesta.cantidadProducto(producto).toString(),
+                        Text(
+                          "x " + cesta.cantidadProducto(producto).toString(),
                           style: TextStyle(
                             fontSize: 16,
                           ),
@@ -499,7 +422,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
-
           ],
         ),
       ),

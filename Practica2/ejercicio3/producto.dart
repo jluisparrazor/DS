@@ -13,8 +13,6 @@ class Producto {
     descuento = desc;
   }
 
-  void calcular(Producto producto) {}
-
   String getNombre() {
     return nombre;
   }
@@ -25,5 +23,10 @@ class Producto {
 
   bool getDescuento() {
     return descuento;
+  }
+
+  Categoria getCategoria() {
+    return categoria;
+
   }
 }

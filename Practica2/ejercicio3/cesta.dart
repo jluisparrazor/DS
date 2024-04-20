@@ -44,7 +44,11 @@ class Cesta {
   }
 
   int cantidadProducto(Producto producto) {
-    return productosAdquiridos[producto] ?? 0;
+    if (productosAdquiridos.containsKey(producto)) {
+      return productosAdquiridos[producto]!;
+    } else {
+      return 0;
+    }
   }
 
   double precioTotal() {
@@ -54,7 +58,4 @@ class Cesta {
     });
     return precio;
   }
-
-
 }
-

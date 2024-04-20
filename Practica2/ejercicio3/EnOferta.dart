@@ -9,7 +9,7 @@ class EnOferta implements Filtro {
       List<Producto> productosFiltrados = [];
 
       for (int i = 0; i < productos.length; i++) {
-        if (productos[i].descuento == filtros.descuento) {
+        if (productos[i].getDescuento() == filtros.descuento) {
           productosFiltrados.add(productos[i]);
         }
       }

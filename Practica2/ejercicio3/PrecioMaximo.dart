@@ -9,7 +9,7 @@ class PrecioMaximo implements Filtro {
       List<Producto> productosFiltrados = [];
 
       for (int i = 0; i < productos.length; i++) {
-        if (productos[i].precio <= filtros.precioMax) {
+        if (productos[i].getPrecio() <= filtros.precioMax) {
           productosFiltrados.add(productos[i]);
         }
       }

@@ -10,7 +10,7 @@ class PorCategoria implements Filtro {
       List<Producto> productosFiltrados = [];
 
       for (int i = 0; i < productos.length; i++) {
-        if (productos[i].categoria == filtros.categoria) {
+        if (productos[i].getCategoria() == filtros.categoria) {
           productosFiltrados.add(productos[i]);
         }
       }

@@ -9,7 +9,7 @@ class PrecioMinimo implements Filtro {
       List<Producto> productosFiltrados = [];
 
       for (int i = 0; i < productos.length; i++) {
-        if (productos[i].precio >= filtros.precioMin) {
+        if (productos[i].getPrecio() >= filtros.precioMin) {
           productosFiltrados.add(productos[i]);
         }
       }
