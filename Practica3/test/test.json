@@ -1,0 +1,21 @@
+[
+    {
+        "nombre": "Eyeliner",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 10,
+        "descuento": true
+    },
+    {
+        "nombre": "Pantalones",
+        "categoria": "Categoria.ropa",
+        "precio": 15,
+        "descuento": false
+    },
+    {
+        "nombre": "Helado",
+        "categoria": "Categoria.alimentacion",
+        "precio": 4,
+        "descuento": false
+    }
+]
+  
