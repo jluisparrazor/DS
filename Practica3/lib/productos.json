@@ -1,0 +1,81 @@
+[
+    {
+        "nombre": "Eyeliner",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 10,
+        "descuento": true
+    },
+    {
+        "nombre": "Rimel",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 12,
+        "descuento": false
+    },
+    {
+        "nombre": "Base",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 50,
+        "descuento": false
+    },
+    {
+        "nombre": "Gloss",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 24,
+        "descuento": true
+    },
+    {
+        "nombre": "Pantalones",
+        "categoria": "Categoria.ropa",
+        "precio": 15,
+        "descuento": false
+    },
+    {
+        "nombre": "Camiseta",
+        "categoria": "Categoria.ropa",
+        "precio": 70,
+        "descuento": false
+    },
+    {
+        "nombre": "Chaqueta",
+        "categoria": "Categoria.ropa",
+        "precio": 32,
+        "descuento": true
+    },
+    {
+        "nombre": "Cinturon",
+        "categoria": "Categoria.ropa",
+        "precio": 7,
+        "descuento": false
+    },
+    {
+        "nombre": "Bufanda",
+        "categoria": "Categoria.ropa",
+        "precio": 9,
+        "descuento": true
+    },
+    {
+        "nombre": "Musaka",
+        "categoria": "Categoria.alimentacion",
+        "precio": 12,
+        "descuento": true
+    },
+    {
+        "nombre": "Caviar",
+        "categoria": "Categoria.alimentacion",
+        "precio": 23,
+        "descuento": true
+    },
+    {
+        "nombre": "Chocolate",
+        "categoria": "Categoria.alimentacion",
+        "precio": 9,
+        "descuento": false
+    },
+    {
+        "nombre": "Helado",
+        "categoria": "Categoria.alimentacion",
+        "precio": 4,
+        "descuento": false
+    }
+]
+  
