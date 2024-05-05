@@ -95,13 +95,21 @@ void main() {
       productos = leerJson("test/test.json");
       gestorFiltros = inicializarGestorFiltros(productos);
     });
-    test("Prueba de inicialización de gestor filtros", (){
+    test("Prueba de inicialización de gestor filtros", () {
       expect(gestorFiltros.cadenaFiltros.productos, productos);
-      
-      List<Filtro> filtros = [EnOferta(), PrecioMinimo(), PrecioMaximo(), PorCategoria()];
 
-      List<String> nombreFiltros = filtros.map((filtro) => filtro.runtimeType.toString()).toList();
-      List<String> nombreFiltrosGestor = gestorFiltros.cadenaFiltros.filtros.map((filtro) => filtro.runtimeType.toString()).toList();
+      List<Filtro> filtros = [
+        EnOferta(),
+        PrecioMinimo(),
+        PrecioMaximo(),
+        PorCategoria()
+      ];
+
+      List<String> nombreFiltros =
+          filtros.map((filtro) => filtro.runtimeType.toString()).toList();
+      List<String> nombreFiltrosGestor = gestorFiltros.cadenaFiltros.filtros
+          .map((filtro) => filtro.runtimeType.toString())
+          .toList();
 
       nombreFiltros.sort();
       nombreFiltrosGestor.sort();
@@ -111,7 +119,6 @@ void main() {
     test("Prueba de Precio Máximo", () {
       Filtro maximo = PrecioMaximo();
       filtroStruct = FiltroStruct(0, 10, false, Categoria.ninguna);
-      gestorFiltros.addFiltro(maximo);
 
       actual = maximo.filtrar(productos, filtroStruct);
       esperado = [productos[0], productos[2]];
@@ -122,7 +129,6 @@ void main() {
       Filtro minimo = PrecioMinimo();
       filtroStruct = FiltroStruct(5, -1, false, Categoria.ninguna);
 
-      gestorFiltros.addFiltro(minimo);
       actual = minimo.filtrar(productos, filtroStruct);
       esperado = [productos[0], productos[1]];
 
@@ -131,7 +137,6 @@ void main() {
     test("Prueba de En Oferta", () {
       Filtro oferta = EnOferta();
       filtroStruct = FiltroStruct(-1, -1, true, Categoria.ninguna);
-      gestorFiltros.addFiltro(oferta);
 
       actual = oferta.filtrar(productos, filtroStruct);
       esperado = [productos[0]];
@@ -141,7 +146,6 @@ void main() {
     test("Prueba de Por Categoria", () {
       Filtro categoria = PorCategoria();
       filtroStruct = FiltroStruct(-1, -1, false, Categoria.alimentacion);
-      gestorFiltros.addFiltro(categoria);
 
       actual = categoria.filtrar(productos, filtroStruct);
       esperado = [productos[2]];
@@ -155,7 +159,7 @@ void main() {
           enOferta = EnOferta(),
           min = PrecioMinimo(),
           max = PrecioMaximo();
-      
+
       gestorFiltros.addFiltro(enOferta);
       gestorFiltros.addFiltro(categoria);
       gestorFiltros.addFiltro(min);
@@ -168,6 +172,5 @@ void main() {
 
       expect(actual, esperado);
     });
-    
   });
 }
