@@ -1,0 +1,121 @@
+[
+    {
+        "id": null,
+        "nombre": "Eyeliner",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 10,
+        "descuento": true,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Rimel",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 12,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Base",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 50,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+        
+    },
+    {
+        "id": null,
+        "nombre": "Gloss",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 24,
+        "descuento": true,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Pantalones",
+        "categoria": "Categoria.ropa",
+        "precio": 15,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {      
+        "id": null,  
+        "nombre": "Camiseta",
+        "categoria": "Categoria.ropa",
+        "precio": 70,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Chaqueta",
+        "categoria": "Categoria.ropa",
+        "precio": 32,
+        "descuento": true,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Cinturon",
+        "categoria": "Categoria.ropa",
+        "precio": 7,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Bufanda",
+        "categoria": "Categoria.ropa",
+        "precio": 9,
+        "descuento": true,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Musaka",
+        "categoria": "Categoria.alimentacion",
+        "precio": 12,
+        "descuento": true,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Caviar",
+        "categoria": "Categoria.alimentacion",
+        "precio": 23,
+        "descuento": true,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Chocolate",
+        "categoria": "Categoria.alimentacion",
+        "precio": 9,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Helado",
+        "categoria": "Categoria.alimentacion",
+        "precio": 4,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    }
+]
+  

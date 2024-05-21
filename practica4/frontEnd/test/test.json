@@ -1,0 +1,30 @@
+[
+    {
+        "id": null,
+        "nombre": "Eyeliner",
+        "categoria": "Categoria.cosmeticos",
+        "precio": 10,
+        "descuento": true,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {   
+        "id": null,
+        "nombre": "Pantalones",
+        "categoria": "Categoria.ropa",
+        "precio": 15,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    },
+    {
+        "id": null,
+        "nombre": "Helado",
+        "categoria": "Categoria.alimentacion",
+        "precio": 4,
+        "descuento": false,
+        "promo_aplicada": false,
+        "usuario": "usuario"
+    }
+]
+  
